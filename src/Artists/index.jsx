@@ -28,7 +28,7 @@ export default function List() {
               >
                 <div>
                   {artist.name}
-                  <img src={artist.photo} className="w-52" />
+                  <img src={artist.photo} alt={artist.name} className="w-52" />
                 </div>
               </Link>
             );
