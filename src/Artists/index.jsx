@@ -24,7 +24,7 @@ export default function List() {
               <Link
                 to={`/artist_details/${artist.id}`}
                 key={artist.id}
-                className="p-4"
+                className="p-4 hover:scale-110"
               >
                 <div>
                   {artist.name}

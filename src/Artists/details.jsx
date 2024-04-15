@@ -21,7 +21,11 @@ export default function ArtistDetails() {
       {load ? (
         <div className="flex flex-wrap gap-20">
           {albums.map((album) => (
-            <Link to={`../albums/${album.id}`} key={album.id} className="p-4">
+            <Link
+              to={`../albums/${album.id}`}
+              key={album.id}
+              className="p-4 hover:scale-110"
+            >
               <div>
                 <img src={album.cover} alt={album.name} className="w-52" />
               </div>

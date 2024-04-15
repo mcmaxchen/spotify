@@ -17,7 +17,11 @@ function Albums() {
       <div className="flex flex-wrap gap-20">
         {albums.map((album) => {
           return (
-            <Link to={"/albums/" + album.id} className="p-4" key={album.id}>
+            <Link
+              to={"/albums/" + album.id}
+              className="p-4 hover:scale-110"
+              key={album.id}
+            >
               <img className="w-52" alt={album.name} src={album.cover} />
 
               <h3>{album.name}</h3>

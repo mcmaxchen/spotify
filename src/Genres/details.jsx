@@ -37,7 +37,11 @@ export default function GenreDetails() {
 
             return (
               <Link key={genre} to={"/albums/" + album.id}>
-                <img src={album.cover} alt={album.name} className="w-52" />
+                <img
+                  src={album.cover}
+                  alt={album.name}
+                  className="w-52 hover:scale-110"
+                />
 
                 <h3>{album.name}</h3>
               </Link>

@@ -19,9 +19,12 @@ export default function Genre() {
   return (
     <>
       {load ? (
-        <div className="flex gap-20">
+        <div className="flex flex-wrap justify-center gap-12 p-16">
           {genres.map((genre) => (
-            <div key={genre.id}>
+            <div
+              className="flex justify-center items-center border px-16 py-5 rounded-xl hover:text-green hover:scale-110"
+              key={genre.id}
+            >
               <Link to={`/genres/${genre.id}`}>
                 <h3>{genre.name}</h3>
               </Link>
