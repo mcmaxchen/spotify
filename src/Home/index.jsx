@@ -33,7 +33,11 @@ export default function Home() {
             }
 
             return (
-              <Link to={"/albums/" + album.id} key={album.id} className="p-4">
+              <Link
+                to={"/albums/" + album.id}
+                key={album.id}
+                className="p-4 hover:scale-110"
+              >
                 <img src={album.cover} alt={album.name} className="w-52" />
                 <h3>{album.name}</h3>
                 <p>{artist.name}</p>

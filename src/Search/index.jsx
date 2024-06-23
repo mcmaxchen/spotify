@@ -22,9 +22,10 @@ export default function Search() {
 
   return (
     <div className="flex flex-col p-12 gap-10">
-      <div className="flex gap-10">
+      <div className="flex gap-10 text-stone-950">
         <input
           type="text"
+          placeholder="What do you like?"
           onChange={(e) => setQuery(e.target.value)}
           className="w-[70vw] h-6 border rounded-full p-6"
         />

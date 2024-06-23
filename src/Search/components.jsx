@@ -4,8 +4,16 @@ export function Artists({ props }) {
   return (
     <div className="flex flex-wrap gap-20">
       {props.map((e) => {
+        if (e.name.length > 25) {
+          e.name = e.name.substring(0, 25) + "...";
+        }
+
         return (
-          <Link key={e.name} to={"/artist_details/" + e.id}>
+          <Link
+            className="hover:scale-110"
+            key={e.name}
+            to={"/artist_details/" + e.id}
+          >
             <img src={e.photo} alt={e.name} />
 
             <h3>{e.name}</h3>
@@ -34,6 +42,10 @@ export function Albums({ props }) {
   return (
     <div className="flex flex-wrap gap-20">
       {props.map((e) => {
+        if (e.name.length > 25) {
+          e.name = e.name.substring(0, 25) + "...";
+        }
+
         return (
           <Link to={"/albums/" + e.id}>
             <img src={e.cover} alt={e.name} />
