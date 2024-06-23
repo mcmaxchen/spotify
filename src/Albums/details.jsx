@@ -8,14 +8,15 @@ export default function AlbumDetails() {
   const audio = useRef(null);
 
   useEffect(() => {
-    async function fetchDetails() {
-      const data = await fetch("http://localhost:8000/albums/" + id);
-      const details = await data.json();
-      setAlbum(details.album);
-      setTracks(details.tracks);
-    }
+    fetch("/json/albums.json").then(async (res) => {
+      const albums = await res.json();
 
-    fetchDetails();
+      setAlbum(
+        albums.find((album) => {
+          return album.id == id;
+        })
+      );
+    });
   }, [id]);
 
   if (album) {
@@ -26,7 +27,7 @@ export default function AlbumDetails() {
           <h3 className="font-bold text-xl">{album.name}</h3>
           <p className="text-sm">{album.description}</p>
 
-          {tracks.map((track) => {
+          {tracks?.map((track) => {
             return (
               <div className="flex flex-col items-center gap-3" key={track.id}>
                 <p>{track.name}</p>

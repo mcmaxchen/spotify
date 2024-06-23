@@ -2,41 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function List() {
-  const [artists, setArtists] = useState(null);
-  const [load, setLoad] = useState(false);
+  const [artists, setArtists] = useState();
 
   useEffect(() => {
-    const fetchArtistsNames = async () => {
-      const url = await fetch("http://localhost:8000/artists");
-      const artist = await url.json();
-      setArtists(artist);
-      setLoad(true);
-    };
-    fetchArtistsNames();
+    fetch("/json/artists.json").then(async (res) => {
+      setArtists(await res.json());
+    });
   }, []);
 
-  return (
-    <>
-      {load ? (
-        <div className="flex flex-wrap gap-20">
-          {artists.map((artist) => {
-            return (
-              <Link
-                to={`/artist_details/${artist.id}`}
-                key={artist.id}
-                className="p-4"
-              >
-                <div>
-                  {artist.name}
-                  <img src={artist.photo} alt={artist.name} className="w-52" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      ) : (
-        <h3>Chargement...</h3>
-      )}
-    </>
-  );
+  if (artists) {
+    return (
+      <div className="flex justify-center flex-wrap gap-20 pt-6 lg:pt-12">
+        {artists.map((artist) => {
+          return (
+            <Link to={"/artists/" + artist.id} key={artist.id}>
+              <img src={artist.photo} alt={artist.name} className="h-44 w-52" />
+              {artist.name}
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
 }

@@ -5,10 +5,8 @@ function Albums() {
   const [albums, setAlbums] = useState();
 
   useEffect(() => {
-    const res = fetch("http://localhost:8000/albums");
-
-    res.then(async (caca) => {
-      setAlbums(await caca.json());
+    fetch("/json/albums.json").then(async (res) => {
+      setAlbums(await res.json());
     });
   }, []);
 

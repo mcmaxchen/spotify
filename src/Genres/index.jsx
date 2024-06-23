@@ -2,35 +2,33 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Genre() {
-  const [genres, setGenre] = useState(null);
-  const [load, setLoad] = useState(false);
+  const [genres, setGenres] = useState();
 
   useEffect(() => {
-    const fetchGenreNames = async () => {
-      const url = await fetch("http://localhost:8000/genres");
-      const genre = await url.json();
-      setGenre(genre);
-      setLoad(true);
-    };
-
-    fetchGenreNames();
+    fetch("/json/genres.json").then(async (res) => {
+      setGenres(await res.json());
+    });
   }, []);
 
-  return (
-    <>
-      {load ? (
-        <div className="flex gap-20">
-          {genres.map((genre) => (
-            <div key={genre.id}>
-              <Link to={`/genres/${genre.id}`}>
-                <h3>{genre.name}</h3>
+  if (genres) {
+    return (
+      <div className="flex justify-center">
+        <div className="flex flex-wrap gap-20 p-16">
+          {genres.map((genre) => {
+            return (
+              <Link
+                key={genre.id}
+                to={"/genres/" + genre.id}
+                className="flex w-fit-content px-10 py-6 rounded-md bg-gradient-to-br from-green to-black text-white"
+              >
+                {genre.name}
               </Link>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      ) : (
-        <h3>Chargement...</h3>
-      )}
-    </>
-  );
+      </div>
+    );
+  }
+
+  return <div className=""></div>;
 }

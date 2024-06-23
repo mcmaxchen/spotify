@@ -6,15 +6,11 @@ export default function Home() {
   const [artists, setArtists] = useState();
 
   useEffect(() => {
-    let page = Math.round(Math.random() * (1, 17));
+    fetch("/json/albums.json").then(async (res) => {
+      setAlbums(await res.json());
+    });
 
-    fetch("http://localhost:8000/albums?page=" + page + "&limit=50").then(
-      async (res) => {
-        setAlbums(await res.json());
-      }
-    );
-
-    fetch("http://localhost:8000/artists").then(async (res) => {
+    fetch("/json/artists.json").then(async (res) => {
       setArtists(await res.json());
     });
   }, []);

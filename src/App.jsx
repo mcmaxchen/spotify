@@ -21,13 +21,15 @@ export default function App() {
         <div className="flex flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/albums" element={<Albums />} />
-            <Route path="/albums/:id" element={<AlbumDetails />} />
-            <Route path="/artists" element={<List />} />
             <Route path="/search" element={<Search />} />
+
+            <Route path="/albums" element={<Albums />} />
             <Route path="/genres" element={<Genre />} />
+            <Route path="/artists" element={<List />} />
+
+            <Route path="/albums/:id" element={<AlbumDetails />} />
             <Route path="/genres/:id" element={<GenreDetails />} />
-            <Route path="/artist_details/:id" element={<ArtistDetails />} />
+            <Route path="/artists/:id" element={<ArtistDetails />} />
           </Routes>
         </div>
       </Router>

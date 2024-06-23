@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Classical"
+  },
+  {
+    "id": 2,
+    "name": "New Age"
+  },
+  {
+    "id": 3,
+    "name": "Electronica"
+  },
+  {
+    "id": 4,
+    "name": "World"
+  },
+  {
+    "id": 5,
+    "name": "Ambient"
+  },
+  {
+    "id": 6,
+    "name": "Jazz"
+  },
+  {
+    "id": 7,
+    "name": "Hip Hop"
+  },
+  {
+    "id": 8,
+    "name": "Alt Rock"
+  },
+  {
+    "id": 9,
+    "name": "Electro Rock"
+  },
+  {
+    "id": 10,
+    "name": "Hard Rock"
+  }
+]
